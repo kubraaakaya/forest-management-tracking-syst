@@ -1,0 +1,20 @@
+CREATE TABLE USER (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    kullanici_adi VARCHAR(50) NOT NULL UNIQUE,
+    sifre VARCHAR(255) NOT NULL,
+    eposta VARCHAR(100) UNIQUE,
+    kayit_tarihi TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE AGACLAR (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tur VARCHAR(100) NOT NULL,
+    bolge VARCHAR(100),
+    yas INT,
+    boy DECIMAL(5,2),
+    cap DECIMAL(5,2),
+    durum VARCHAR(50),
+    kayit_tarihi TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ekleyen_kullanici_id INT,
+    FOREIGN KEY (ekleyen_kullanici_id) REFERENCES USER(id) ON DELETE SET NULL
+);
